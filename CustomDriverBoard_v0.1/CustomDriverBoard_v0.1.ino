@@ -11,14 +11,12 @@
 #include <Joystick.h>
 
 void setup() {
-  // Initialize Button Pins
   pinMode(2, INPUT_PULLUP);
   pinMode(3, INPUT_PULLUP);
   pinMode(4, INPUT_PULLUP);
   pinMode(5, INPUT_PULLUP);
   pinMode(6, INPUT_PULLUP);
 
-  // Initialize Joystick Library
   Joystick.begin();
 }
 
