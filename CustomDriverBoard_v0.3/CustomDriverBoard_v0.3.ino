@@ -11,6 +11,9 @@
 
 #include <Joystick.h>
 
+// Enable or disable button toggling.
+int toggleMode = true;
+
 void setup() {
   pinMode(2, INPUT_PULLUP);
   pinMode(3, INPUT_PULLUP);
@@ -36,7 +39,6 @@ const int pinToButtonMap = 2;
 // Put number of buttons and last state for each one here.
 int lastButtonState[5] = {false,false,false,false,false};
 
-int toggleMode = true;
 
 void loop() {
 
