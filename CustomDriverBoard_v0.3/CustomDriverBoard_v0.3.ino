@@ -36,24 +36,26 @@ const int pinToButtonMap = 2;
 // Put number of buttons and last state for each one here.
 int lastButtonState[5] = {false,false,false,false,false};
 
+int toggleMode = true;
 
 void loop() {
 
   // Read pin values
-  for (int index = 0; index < 5; index++)
-  {
+  for (int index = 0; index < 5; index++) {
     int currentButtonState = !digitalRead(index + pinToButtonMap);
-    if (currentButtonState != lastButtonState[index])
-    {
-      // Buttons toggle. For no-toggle, replace w/ 
-      // Joystick.setButton(index, currentButtonState);
+    if (currentButtonState != lastButtonState[index]) {
       // Physical button state changed.
-      if (currentButtonState) {
-        // Physical button is depressed.
-        for (int j = 0; j < 5; j++) {
-          Joystick.setButton(j, false);
+      if (toggleMode) {
+        if (currentButtonState) {
+          // Physical button is depressed.
+          for (int j = 0; j < 5; j++) {
+            Joystick.setButton(j, false);
+          }
+          Joystick.setButton(index, true);
         }
-        Joystick.setButton(index, true);
+      }
+      else {
+        Joystick.setButton(index, currentButtonState);
       }
       lastButtonState[index] = currentButtonState;
     }
