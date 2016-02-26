@@ -1,12 +1,13 @@
-// v0.1
+// v0.2
 // 
 // Sketch to connect a custom driver board
 // as an emulated joystick.
 // 
 // by Kai Borah (Team 3620)
 // 
-// Joystick library by Matthew Heironimus
-//---------------------------------------------
+// Joystick library by Matthew Heironimus 
+// - https://github.com/MHeironimus/ArduinoJoystickLibrary
+//-----------------------------------------------------------
 
 #include <Joystick.h>
 
