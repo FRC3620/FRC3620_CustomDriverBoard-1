@@ -57,7 +57,7 @@ void setup() {
   // Put LCD message here
   lcd.print(" Auto Mode: NONE");
   lcd.setCursor(0, 1);
-  lcd.print("Angle Mode: B");
+  lcd.print("Angle Mode: A");
 }
 
 // Constant that maps the phyical pin to the joystick button. 
