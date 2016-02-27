@@ -20,12 +20,12 @@
 int toggleMode = true;
 
 // Encoder variables
-/*int val; 
-int encoder0PinA = 11;
-int encoder0PinB = 12;
+int val; 
+int encoder0PinA = A0;
+int encoder0PinB = A1;
 int encoder0Pos = 0;
 int encoder0PinALast = LOW;
-int n = LOW;*/
+int n = LOW;
 
 //i2c LCD connection
 Adafruit_LiquidCrystal lcd(0);
@@ -49,13 +49,15 @@ void setup() {
         Joystick.setButton(0, true);
 
   // Encoder pins
-  /*pinMode (encoder0PinA, INPUT);
-  pinMode (encoder0PinB, INPUT);
-  Serial.begin (9600);*/
+  pinMode (encoder0PinA, INPUT_PULLUP);
+  pinMode (encoder0PinB, INPUT_PULLUP);
+  Serial.begin (115200);
 
   lcd.begin(16, 2);
   // Put LCD message here
-  lcd.print("  Go Avg Joes!");
+  lcd.print(" Auto Mode: NONE");
+  lcd.setCursor(0, 1);
+  lcd.print("Angle Mode: B");
 }
 
 // Constant that maps the phyical pin to the joystick button. 
@@ -90,7 +92,7 @@ void loop() {
   }
   
   // Read the encoder.
-  /*n = digitalRead(encoder0PinA);
+  n = digitalRead(encoder0PinA);
    if ((encoder0PinALast == LOW) && (n == HIGH)) {
      if (digitalRead(encoder0PinB) == LOW) {
        encoder0Pos--;
@@ -100,7 +102,7 @@ void loop() {
      Serial.print (encoder0Pos);
      Serial.print ("/");
    } 
-   encoder0PinALast = n;*/
+   encoder0PinALast = n;
 
    //Run LCD loop
   /*lcd.setCursor(4, 1);
@@ -113,6 +115,28 @@ void loop() {
   delay(500);
   lcd.setCursor(3, 1);
   lcd.print("       ");*/
+  for (int index = 0; index < 5; index++) {
+    if (!digitalRead(4)) {
+      lcd.setCursor(12, 0);
+      lcd.print("1   ");
+    }
+    if (!digitalRead(5)) {
+      lcd.setCursor(12, 0);
+      lcd.print("2   ");
+    }
+    if (!digitalRead(6)) {
+      lcd.setCursor(12, 0);
+      lcd.print("NONE");
+    }
+    if (!digitalRead(7)) {
+      lcd.setCursor(12, 1);
+      lcd.print("A   ");
+    }
+    if (!digitalRead(8)) {
+      lcd.setCursor(12, 1);
+      lcd.print("B   ");
+    }
+  }
 
   delay(50);
 }
