@@ -61,7 +61,7 @@ void loop() {
     int currentButtonState = !digitalRead(index + pinToButtonMap);
     if (currentButtonState != lastButtonState[index]) {
       // Physical button state changed.
-      if (toggleMode) {
+      if (toggle mode) {
         if (currentButtonState) {
           // Physical button is depressed.
           for (int j = 0; j < 5; j++) {
