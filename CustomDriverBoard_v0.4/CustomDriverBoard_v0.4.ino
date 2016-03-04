@@ -1,4 +1,5 @@
-// v0.3
+// v0.4
+// TODO Add global variable for # of buttons.
 // 
 // Sketch to connect a custom driver board
 // as an emulated joystick.
@@ -37,13 +38,16 @@ void setup() {
   pinMode(6, INPUT_PULLUP);
   pinMode(7, INPUT_PULLUP);
   pinMode(8, INPUT_PULLUP);
+  pinMode(9, INPUT_PULLUP);
+  pinMode(10, INPUT_PULLUP);
+  pinMode(11, INPUT_PULLUP);
 
   // Start reading joystick.
   Joystick.begin(true);
   delay(1000);
   
   // Starts with button #1 (button 0) set true.
-  for (int j = 0; j < 5; j++) {
+  for (int j = 0; j < 8; j++) {
           Joystick.setButton(j, false);
         }
         Joystick.setButton(0, true);
@@ -65,20 +69,20 @@ void setup() {
 const int pinToButtonMap = 4;
 
 // Put number of buttons and last state for each one here.
-int lastButtonState[5] = {false,false,false,false,false};
+int lastButtonState[8] = {false,false,false,false,false,false,false,false};
 
 
 void loop() {
 
   // Read button pin values.
-  for (int index = 0; index < 5; index++) {
+  for (int index = 0; index < 8; index++) {
     int currentButtonState = !digitalRead(index + pinToButtonMap);
     if (currentButtonState != lastButtonState[index]) {
       // Physical button state changed.
       if (toggleMode) {
         if (currentButtonState) {
           // Physical button is depressed.
-          for (int j = 0; j < 5; j++) {
+          for (int j = 0; j < 8; j++) {
             Joystick.setButton(j, false);
           }
           Joystick.setButton(index, true);
