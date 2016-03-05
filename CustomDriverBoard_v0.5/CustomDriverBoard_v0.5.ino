@@ -1,14 +1,18 @@
 // v0.5
 // TODO Add global variable for # of buttons.
 // 
-// Sketch to connect a custom driver board
+// Run our custom driver board
 // as an emulated joystick.
 // 
-// by Kai Borah (Team 3620)
+// Arcade buttons are joystick 1-8
+// Encoder binaries are 9-11
 // 
-// Joystick library by Matthew Heironimus 
-// - https://github.com/MHeironimus/ArduinoJoystickLibrary
+// by Kai Borah (Team 3620)
 //-----------------------------------------------------------
+// TODO:
+// -Seperate auto and teleop LCD modes.
+// -Show auto modes in names, not numbers?
+// -Make one axis always full on.
 
 // Joystick Library
 #include <Joystick.h>
@@ -29,7 +33,8 @@ Encoder myEnc(0, 1);
 Adafruit_LiquidCrystal lcd(0);
 
 void setup() {
-  // Button pins connected on 4-8
+  
+  // Button pins connected on 4-11
   pinMode(4, INPUT_PULLUP);
   pinMode(5, INPUT_PULLUP);
   pinMode(6, INPUT_PULLUP);
@@ -48,6 +53,8 @@ void setup() {
           Joystick.setButton(j, false);
         }
         Joystick.setButton(0, true);
+
+  Joystick.setZAxis(127);
   
   // LCD initiate.
   lcd.begin(16, 2);
@@ -99,65 +106,65 @@ void loop() {
     if (which < 0) {
       which = which + 8;
     }
-    Serial.println(which);
+    //Serial.println(which);
 
-  //Run LCD loop and encoder to button output.
+  //Run LCD loop and encoder to 3-button binary output.
   for (int index = 0; index < 5; index++) {
     if (which == 0) {
+      Joystick.setButton(8, false);
+      Joystick.setButton(9, false);
       Joystick.setButton(10, false);
-      Joystick.setButton(11, false);
-      Joystick.setButton(12, false);
+      lcd.setCursor(12, 0);
+      lcd.print("0   ");
+    }
+    if (which == 1) {
+      Joystick.setButton(8, true);
+      Joystick.setButton(9, false);
+      Joystick.setButton(10, false);
       lcd.setCursor(12, 0);
       lcd.print("1   ");
     }
-    if (which == 1) {
-      Joystick.setButton(10, true);
-      Joystick.setButton(11, false);
-      Joystick.setButton(12, false);
+    if (which == 2) {
+      Joystick.setButton(8, false);
+      Joystick.setButton(9, true);
+      Joystick.setButton(10, false);
       lcd.setCursor(12, 0);
       lcd.print("2   ");
     }
-    if (which == 2) {
+    if (which == 3) {
+      Joystick.setButton(8, true);
+      Joystick.setButton(9, true);
       Joystick.setButton(10, false);
-      Joystick.setButton(11, true);
-      Joystick.setButton(12, false);
       lcd.setCursor(12, 0);
       lcd.print("3   ");
     }
-    if (which == 3) {
+    if (which == 4) {
+      Joystick.setButton(8, false);
+      Joystick.setButton(9, false);
       Joystick.setButton(10, true);
-      Joystick.setButton(11, true);
-      Joystick.setButton(12, false);
       lcd.setCursor(12, 0);
       lcd.print("4   ");
     }
-    if (which == 4) {
-      Joystick.setButton(10, false);
-      Joystick.setButton(11, false);
-      Joystick.setButton(12, true);
+    if (which == 5) {
+      Joystick.setButton(8, true);
+      Joystick.setButton(9, false);
+      Joystick.setButton(10, true);
       lcd.setCursor(12, 0);
       lcd.print("5   ");
     }
-    if (which == 5) {
+    if (which == 6) {
+      Joystick.setButton(8, false);
+      Joystick.setButton(9, true);
       Joystick.setButton(10, true);
-      Joystick.setButton(11, false);
-      Joystick.setButton(12, true);
       lcd.setCursor(12, 0);
       lcd.print("6   ");
     }
-    if (which == 6) {
-      Joystick.setButton(10, false);
-      Joystick.setButton(11, true);
-      Joystick.setButton(12, true);
+    if (which == 7) {
+      Joystick.setButton(8, true);
+      Joystick.setButton(9, true);
+      Joystick.setButton(10, true);
       lcd.setCursor(12, 0);
       lcd.print("7   ");
-    }
-    if (which == 7) {
-      Joystick.setButton(10, true);
-      Joystick.setButton(11, true);
-      Joystick.setButton(12, true);
-      lcd.setCursor(12, 0);
-      lcd.print("8   ");
     }
     /*if (!digitalRead(7)) {
       lcd.setCursor(12, 1);
