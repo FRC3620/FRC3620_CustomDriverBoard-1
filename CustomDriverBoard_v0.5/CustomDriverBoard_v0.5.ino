@@ -10,9 +10,13 @@
 // by Kai Borah (Team 3620)
 //-----------------------------------------------------------
 // TODO:
+<<<<<<< HEAD
 // -Seperate auto and teleop LCD modes.
 // -Show auto modes in names, not numbers?
 // -Make one axis always full on.
+=======
+// -
+>>>>>>> 438da610388bd380fcd44cccbee6ec6502754ca9
 
 // Joystick Library
 #include <Joystick.h>
@@ -111,58 +115,106 @@ void loop() {
   //Run LCD loop and encoder to 3-button binary output.
   for (int index = 0; index < 5; index++) {
     if (which == 0) {
+<<<<<<< HEAD
       Joystick.setButton(8, false);
       Joystick.setButton(9, false);
       Joystick.setButton(10, false);
+=======
+      Joystick.setButton(9, false);
+      Joystick.setButton(10, false);
+      Joystick.setButton(11, false);
+>>>>>>> 438da610388bd380fcd44cccbee6ec6502754ca9
       lcd.setCursor(12, 0);
       lcd.print("0   ");
     }
     if (which == 1) {
+<<<<<<< HEAD
       Joystick.setButton(8, true);
       Joystick.setButton(9, false);
       Joystick.setButton(10, false);
+=======
+      Joystick.setButton(9, true);
+      Joystick.setButton(10, false);
+      Joystick.setButton(11, false);
+>>>>>>> 438da610388bd380fcd44cccbee6ec6502754ca9
       lcd.setCursor(12, 0);
       lcd.print("1   ");
     }
     if (which == 2) {
+<<<<<<< HEAD
       Joystick.setButton(8, false);
       Joystick.setButton(9, true);
       Joystick.setButton(10, false);
+=======
+      Joystick.setButton(9, false);
+      Joystick.setButton(10, true);
+      Joystick.setButton(11, false);
+>>>>>>> 438da610388bd380fcd44cccbee6ec6502754ca9
       lcd.setCursor(12, 0);
       lcd.print("2   ");
     }
     if (which == 3) {
+<<<<<<< HEAD
       Joystick.setButton(8, true);
       Joystick.setButton(9, true);
       Joystick.setButton(10, false);
+=======
+      Joystick.setButton(9, true);
+      Joystick.setButton(10, true);
+      Joystick.setButton(11, false);
+>>>>>>> 438da610388bd380fcd44cccbee6ec6502754ca9
       lcd.setCursor(12, 0);
       lcd.print("3   ");
     }
     if (which == 4) {
+<<<<<<< HEAD
       Joystick.setButton(8, false);
       Joystick.setButton(9, false);
       Joystick.setButton(10, true);
+=======
+      Joystick.setButton(9, false);
+      Joystick.setButton(10, false);
+      Joystick.setButton(11, true);
+>>>>>>> 438da610388bd380fcd44cccbee6ec6502754ca9
       lcd.setCursor(12, 0);
       lcd.print("4   ");
     }
     if (which == 5) {
+<<<<<<< HEAD
       Joystick.setButton(8, true);
       Joystick.setButton(9, false);
       Joystick.setButton(10, true);
+=======
+      Joystick.setButton(9, true);
+      Joystick.setButton(10, false);
+      Joystick.setButton(11, true);
+>>>>>>> 438da610388bd380fcd44cccbee6ec6502754ca9
       lcd.setCursor(12, 0);
       lcd.print("5   ");
     }
     if (which == 6) {
+<<<<<<< HEAD
       Joystick.setButton(8, false);
       Joystick.setButton(9, true);
       Joystick.setButton(10, true);
+=======
+      Joystick.setButton(9, false);
+      Joystick.setButton(10, true);
+      Joystick.setButton(11, true);
+>>>>>>> 438da610388bd380fcd44cccbee6ec6502754ca9
       lcd.setCursor(12, 0);
       lcd.print("6   ");
     }
     if (which == 7) {
+<<<<<<< HEAD
       Joystick.setButton(8, true);
       Joystick.setButton(9, true);
       Joystick.setButton(10, true);
+=======
+      Joystick.setButton(9, true);
+      Joystick.setButton(10, true);
+      Joystick.setButton(11, true);
+>>>>>>> 438da610388bd380fcd44cccbee6ec6502754ca9
       lcd.setCursor(12, 0);
       lcd.print("7   ");
     }
