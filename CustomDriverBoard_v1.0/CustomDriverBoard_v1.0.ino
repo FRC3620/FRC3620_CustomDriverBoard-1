@@ -30,7 +30,11 @@
 #include <Encoder.h>
 
 // Enable or disable button toggling.
+<<<<<<< HEAD
 int toggleMode = true;
+=======
+int toggleMode = false;
+>>>>>>> 49ec5640b55f45077f3a216e167bd75ee8e80e35
 
 Encoder myEnc(0, 1);
 
