@@ -1,21 +1,21 @@
-//  Test version 0.6
+//  Final v1.0
 //
-//  Run our custom driver board
-//  as an emulated joystick with buttons.
+//  Run the custom control deck as an emulated joystick with buttons.
 //
-//  Arcade buttons are joystick 0-7
-//  Encoder binaries are 8-10
+//  Arcade buttons are joystick 0-4
+//  Lane binaries are joystick 5-7
+//  Auto binaries are joystick 8-10
+//  
 //  
 //  Pins in use:
 //   -Encoder pins D0 and D1
 //   -LCD I2C Pins D2 and D3 (SDA. SCL)
-//   -Arcade buttons on pins D4-D11
+//   -Arcade buttons on pins D4-D7
 //   
 //
 //  by Kai Borah (Team 3620)
-//----------------------------------------------
+//  --------------------------------------------------------------
 //  TODO:
-//  -Add global variable for # of buttons.
 //  -Seperate auto and teleop LCD modes.
 //  -Show auto modes in names, not numbers?
 
@@ -50,10 +50,10 @@ void setup() {
   pinMode(5, INPUT_PULLUP);
   pinMode(6, INPUT_PULLUP);
   pinMode(7, INPUT_PULLUP);
-  pinMode(8, INPUT_PULLUP);
-  pinMode(9, INPUT_PULLUP);
-  pinMode(10, INPUT_PULLUP);
-  pinMode(11, INPUT_PULLUP);
+//  pinMode(8, INPUT_PULLUP);
+//  pinMode(9, INPUT_PULLUP);
+//  pinMode(10, INPUT_PULLUP);
+//  pinMode(11, INPUT_PULLUP);
 
   // Start reading joystick.
   Joystick.begin(true);
@@ -78,8 +78,6 @@ void setup() {
   lcd.setCursor(6, 1);
   lcd.print("Lane:       ");
   delay(500);
-
-  Serial.println("setupBla");
 }
 
 // Constant that maps the phyical pin to the joystick button.
@@ -100,8 +98,6 @@ int whichLane = 0;
 
 
 void loop() {
-  Serial.println("bla");
-
   // Read button pin values.
   for (int index = 0; index < 4; index++) {
     int currentButtonState = !digitalRead(index + pinToButtonMap);
@@ -134,8 +130,6 @@ void loop() {
       encoderJustPressed = true;
     }
   }
-  
-//  Serial.println(!digitalRead(12));
  
 //  Serial.print("Current is ");
 //  Serial.println(encoderCurrent);
@@ -181,7 +175,6 @@ void loop() {
       if (whichLane < 0) {
         whichLane = whichLane + 6;
       }
-      Serial.println("blabla");
       int bit1 = whichLane & 1;
       int bit2 = whichLane & 2;
       int bit4 = whichLane & 4;
@@ -199,7 +192,6 @@ void loop() {
       if (whichAuto < 0) {
         whichAuto = whichAuto + 8;
       }
-      Serial.println("elseblabla");
       int bit1 = whichAuto & 1;
       int bit2 = whichAuto & 2;
       int bit4 = whichAuto & 4;
@@ -207,15 +199,12 @@ void loop() {
       Joystick.setButton(9, bit2);
       Joystick.setButton(10, bit4);
       lcd.setCursor(12, 0);
-   // lcd.print("0   ");
       char c = '0' + whichAuto;
       lcd.print(c);
         
     }
   }
-  Serial.println("preDelay");
   delay(50);
-  Serial.println("postDelay");
 }
 
 
