@@ -1,4 +1,4 @@
-//  Final v1.0
+//  Final v1.1
 //
 //  Run the custom control deck as an emulated joystick with buttons.
 //
@@ -30,7 +30,7 @@
 #include <Encoder.h>
 
 // Enable or disable button toggling.
-int toggleMode = true;
+int toggleMode = false;
 
 Encoder myEnc(0, 1);
 
