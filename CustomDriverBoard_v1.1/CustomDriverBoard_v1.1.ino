@@ -61,8 +61,8 @@ int encoderMode = MODE_NONE;
 int whichAuto = 0;
 int whichLane = 0;
 
-#define N_AUTO 9
-String autoLabels[N_AUTO] = { "None   ", "CDF     ", "LoBar   ", "Moat    ", "Port    ", "RoughTer", "ReachDef", "LB&Shoot", "LB&HiSho"};
+#define N_AUTO 10
+String autoLabels[N_AUTO] = { "None   ", "CDF     ", "CDF2    ", "LoBar   ", "Moat    ", "Port    ", "RoughTer", "ReachDef", "LB&Shoot", "LB&HiSho"};
 #define N_LANES 7
 String laneLabels[N_LANES] = { "No", "2<", "2^", "3^", "4^", "5^", "5>" };
 
